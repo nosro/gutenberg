@@ -7,8 +7,8 @@ import { castArray, filter, first, get, mapKeys, orderBy } from 'lodash';
  * WordPress dependencies
  */
 import { __, _n, sprintf } from '@wordpress/i18n';
-import { Dropdown, IconButton, Toolbar, PanelBody, AccessibleSVG } from '@wordpress/components';
-import { getBlockType, getPossibleBlockTransformations, switchToBlockType, hasChildBlocks } from '@wordpress/blocks';
+import { Dropdown, Icimport { Dropdown, IconButton, Toolbar, PanelBody, AccessibleSVG } from '@wordpress/components';
+import { getBlockType, getPossibleBlockTransformations, switchToBlockType, hasChildBlocksWithInserterSupport } from '@wordpress/blocks';
 import { Component, Fragment } from '@wordpress/element';
 import { DOWN } from '@wordpress/keycodes';
 import { withSelect, withDispatch } from '@wordpress/data';
@@ -117,7 +117,7 @@ export class BlockSwitcher extends Component {
 										id: destinationBlockType.name,
 										icon: destinationBlockType.icon,
 										title: destinationBlockType.title,
-										hasChildBlocks: hasChildBlocks( destinationBlockType.name ),
+										hasChildBlocksWithInserterSupport: hasChildBlocksWithInserterSupport( destinationBlockType.name ),
 									} ) ) }
 									onSelect={ ( item ) => {
 										onTransform( blocks, item.id );

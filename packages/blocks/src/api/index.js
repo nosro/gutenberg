@@ -40,6 +40,7 @@ export {
 	isReusableBlock,
 	getChildBlockNames,
 	hasChildBlocks,
+	hasChildBlocksWithInserterSupport,
 	unstable__bootstrapServerSideBlockDefinitions, // eslint-disable-line camelcase
 	registerBlockStyle,
 } from './registration';

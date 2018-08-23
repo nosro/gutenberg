@@ -271,14 +271,7 @@ export function getBlockTypes() {
  * @return {?*}                              Block support value
  */
 export function getBlockSupport( nameOrType, feature, defaultSupports ) {
-	const blockType = 'string' === typeof nameOrType ?
-		getBlockType( nameOrType ) :
-		nameOrType;
-
-	return get( blockType, [
-		'supports',
-		feature,
-	], defaultSupports );
+	return select( 'core/blocks' ).getBlockSupport( nameOrType, feature, defaultSupports );
 }
 
 /**
@@ -292,7 +285,7 @@ export function getBlockSupport( nameOrType, feature, defaultSupports ) {
  * @return {boolean} Whether block supports feature.
  */
 export function hasBlockSupport( nameOrType, feature, defaultSupports ) {
-	return !! getBlockSupport( nameOrType, feature, defaultSupports );
+	return select( 'core/blocks' ).hasBlockSupport( nameOrType, feature, defaultSupports );
 }
 
 /**
@@ -328,6 +321,17 @@ export const getChildBlockNames = ( blockName ) => {
  */
 export const hasChildBlocks = ( blockName ) => {
 	return select( 'core/blocks' ).hasChildBlocks( blockName );
+};
+
+/**
+ * Returns a boolean indicating if a block has at least one child block with inserter support.
+ *
+ * @param {string} blockName Block type name.
+ *
+ * @return {boolean} True if a block contains at least one child blocks with inserter support and false otherwise.
+ */
+export const hasChildBlocksWithInserterSupport = ( blockName ) => {
+	return select( 'core/blocks' ).hasChildBlocksWithInserterSupport( blockName );
 };
 
 /**

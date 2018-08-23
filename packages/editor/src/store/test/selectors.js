@@ -3030,7 +3030,7 @@ describe( 'selectors', () => {
 				isDisabled: false,
 				utility: 0,
 				frecency: 0,
-				hasChildBlocks: false,
+				hasChildBlocksWithInserterSupport: false,
 			} );
 			const reusableBlockItem = items.find( ( item ) => item.id === 'core/block/1' );
 			expect( reusableBlockItem ).toEqual( {
