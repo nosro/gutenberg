@@ -271,7 +271,7 @@ function getEmbedBlockSettings( { title, description, icon, category = 'embed', 
 				type: 'string',
 			},
 			caption: {
-				source: 'rich-text',
+				source: 'children',
 				selector: 'figcaption',
 			},
 			type: {
