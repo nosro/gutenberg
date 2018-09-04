@@ -48,7 +48,6 @@ class Draggable extends Component {
 	 * @param  {Object} event     The non-custom DragEvent.
 	 */
 	onDragOver( event ) {
-		event.dataTransfer.dropEffect = 'move';
 		this.cloneWrapper.style.top =
 			`${ parseInt( this.cloneWrapper.style.top, 10 ) + event.clientY - this.cursorTop }px`;
 		this.cloneWrapper.style.left =
@@ -91,7 +90,6 @@ class Draggable extends Component {
 		}
 
 		event.dataTransfer.setData( 'text', JSON.stringify( transferData ) );
-		event.dataTransfer.effectAllowed = 'move';
 
 		// Prepare element clone and append to element wrapper.
 		const elementRect = element.getBoundingClientRect();
