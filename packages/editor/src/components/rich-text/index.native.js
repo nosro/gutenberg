@@ -104,11 +104,11 @@ export class RichText extends Component {
 
 	shouldComponentUpdate( nextProps ) {
 		// The check below allows us to avoid updating the content right after an `onChange` call
-		if ( nextProps.content.contentTree &&
-			nextProps.content.eventCount &&
+		if ( nextProps.value.contentTree &&
+			nextProps.value.eventCount &&
 			this.lastContent && // first time the component is drawn with empty content `lastContent` is undefined
 			this.lastEventCount &&
-			nextProps.content.contentTree.eventCount !== this.lastEventCount ) {
+			nextProps.value.contentTree.eventCount !== this.lastEventCount ) {
 			return false;
 		}
 
@@ -191,8 +191,8 @@ export class RichText extends Component {
 		);
 
 		// Save back to HTML from React tree
-		const html = '<' + tagName + '>' + toString( this.props.content.contentTree ) + '</' + tagName + '>';
-		const eventCount = this.props.content.eventCount;
+		const html = '<' + tagName + '>' + toString( this.props.value.contentTree ) + '</' + tagName + '>';
+		const eventCount = this.props.value.eventCount;
 
 		return (
 			<View>

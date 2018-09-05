@@ -29,7 +29,7 @@ class ParagraphEdit extends Component {
 			<View>
 				<RichText
 					tagName="p"
-					content={ { contentTree: attributes.content, eventCount: attributes.eventCount } }
+					value={ { contentTree: attributes.content, eventCount: attributes.eventCount } }
 					style={ {
 						...style,
 						minHeight: Math.max( minHeight, typeof attributes.aztecHeight === 'undefined' ? 0 : attributes.aztecHeight ),

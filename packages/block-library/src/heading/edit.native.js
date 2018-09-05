@@ -35,7 +35,7 @@ class HeadingEdit extends Component {
 			<View>
 				<RichText
 					tagName={ tagName }
-					content={ { contentTree: attributes.content, eventCount: attributes.eventCount } }
+					value={ { contentTree: attributes.content, eventCount: attributes.eventCount } }
 					style={ {
 						minHeight: Math.max( minHeight, typeof attributes.aztecHeight === 'undefined' ? 0 : attributes.aztecHeight ),
 					} }
