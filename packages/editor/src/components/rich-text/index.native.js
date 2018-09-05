@@ -191,8 +191,7 @@ export class RichText extends Component {
 		);
 
 		// Save back to HTML from React tree
-		// XXX: using content.contentTree.text here is only a test, this needs to properly serialize from the internal representation into html to be used in Aztec.
-		const html = '<' + tagName + '>' + renderToString( this.props.content.contentTree.text ) + '</' + tagName + '>';
+		const html = '<' + tagName + '>' + toString( this.props.content.contentTree ) + '</' + tagName + '>';
 		const eventCount = this.props.content.eventCount;
 
 		return (
