@@ -22,20 +22,19 @@ function BlockInvalidWarning( { convertToHTML, convertToBlocks, convertToClassic
 		<Warning
 			actions={ [
 				<Button key="convert" onClick={ convertToBlocks } isLarge isPrimary={ ! hasHTMLBlock }>
-					{ __( 'Convert to Blocks' ) }
+					{ __( 'Auto-convert' ) }
 				</Button>,
 				hasHTMLBlock && (
 					<Button key="edit" onClick={ convertToHTML } isLarge isPrimary>
-						{ __( 'Keep as HTML' ) }
+						{ __( 'Keep' ) }
 					</Button>
 				),
 			] }
 			secondaryActions={ [
-				{ title: __( 'Convert to Blocks' ), onClick: convertToBlocks },
 				{ title: __( 'Convert to Classic Block' ), onClick: convertToClassic },
 			] }
 		>
-			{ __( 'This block has been modified externally.' ) }
+			{ __( 'This block contains unexpected content.' ) }
 		</Warning>
 	);
 }
