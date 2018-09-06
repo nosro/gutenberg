@@ -51,7 +51,7 @@ export default compose( [
 	withSelect( ( select, { clientId } ) => {
 		const { getBlock, getReusableBlock } = select( 'core/editor' );
 		const {
-			getUnstructuredFallbackBlockName,
+			getFreeformFallbackBlockName,
 			getUnregisteredFallbackBlockName,
 		} = select( 'core/blocks' );
 
@@ -64,7 +64,7 @@ export default compose( [
 			// Hide 'Add to Reusable Blocks' on Classic blocks. Showing it causes a
 			// confusing UX, because of its similarity to the 'Convert to Blocks' button.
 			isVisible: (
-				block.name !== getUnstructuredFallbackBlockName() &&
+				block.name !== getFreeformFallbackBlockName() &&
 				block.name !== getUnregisteredFallbackBlockName()
 			),
 			isStaticBlock: ! isReusableBlock( block ) || ! getReusableBlock( block.attributes.ref ),

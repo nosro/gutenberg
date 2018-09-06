@@ -4,7 +4,7 @@
 import {
 	registerBlockType,
 	setDefaultBlockName,
-	setUnstructuredTypeHandlerName,
+	setFreeformContentHandlerName,
 	setUnregisteredTypeHandlerName,
 } from '@wordpress/blocks';
 
@@ -100,6 +100,6 @@ export const registerCoreBlocks = () => {
 	} );
 
 	setDefaultBlockName( paragraph.name );
-	setUnstructuredTypeHandlerName( freeform.name );
+	setFreeformContentHandlerName( freeform.name );
 	setUnregisteredTypeHandlerName( missing.name );
 };

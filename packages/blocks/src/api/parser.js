@@ -17,7 +17,7 @@ import { parse as grammarParse } from '@wordpress/block-serialization-spec-parse
 import {
 	getBlockType,
 	getUnknownTypeHandlerName,
-	getUnstructuredTypeHandlerName,
+	getFreeformContentHandlerName,
 	getUnregisteredTypeHandlerName,
 } from './registration';
 import { createBlock } from './factory';
@@ -293,14 +293,14 @@ export function createBlockWithFallback( blockNode ) {
 		innerHTML,
 	} = blockNode;
 	const fallbackBlock = getUnknownTypeHandlerName();
-	const unstructuredFallbackBlock = getUnstructuredTypeHandlerName();
+	const freeformContentFallbackBlock = getFreeformContentHandlerName();
 	const unregisteredFallbackBlock = getUnregisteredTypeHandlerName();
-	const isUnstructuredFallback = ( name ) => (
-		name === unstructuredFallbackBlock ||
+	const isFreeformFallback = ( name ) => (
+		name === freeformContentFallbackBlock ||
 		name === fallbackBlock
 	);
 	const isFallbackBlock = ( name ) => (
-		name === unstructuredFallbackBlock ||
+		name === freeformContentFallbackBlock ||
 		name === unregisteredFallbackBlock ||
 		name === fallbackBlock
 	);
@@ -311,7 +311,7 @@ export function createBlockWithFallback( blockNode ) {
 	const originalUndelimitedContent = innerHTML = innerHTML.trim();
 
 	// Use type from block content, otherwise find unknown handler.
-	let name = originalName || unstructuredFallbackBlock || fallbackBlock;
+	let name = originalName || freeformContentFallbackBlock || fallbackBlock;
 
 	// Convert 'core/text' blocks in existing content to 'core/paragraph'.
 	if ( 'core/text' === name || 'core/cover-text' === name ) {
@@ -321,7 +321,7 @@ export function createBlockWithFallback( blockNode ) {
 	// Fallback content may be upgraded from classic editor expecting implicit
 	// automatic paragraphs, so preserve them. Assumes wpautop is idempotent,
 	// meaning there are no negative consequences to repeated autop calls.
-	if ( isUnstructuredFallback( name ) ) {
+	if ( isFreeformFallback( name ) ) {
 		innerHTML = autop( innerHTML ).trim();
 	}
 

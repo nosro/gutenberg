@@ -70,7 +70,7 @@ export function getFallbackBlockName( state ) {
  *
  * @return {string?} Name of the block for handling non-block content.
  */
-export function getUnstructuredFallbackBlockName( state ) {
+export function getFreeformFallbackBlockName( state ) {
 	return state.nonblockFallbackBlockName;
 }
 
